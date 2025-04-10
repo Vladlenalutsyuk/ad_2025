@@ -1,37 +1,35 @@
 <template>
-    <v-container>
-      <v-row>
-        <v-col cols="12">
-          <v-card class="mt-5">
-            <v-img height="300px" src="https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg"></v-img>
-  
-            <v-card-text>
-              <h1 class="text--primary mb-3">Lorem Ipsum</h1>
-              <p>
-                Lorem Ipsum has been the industry's unknown printer took a galley of type and scrambled it to make a type
-                specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
-                including versions of Lorem Ipsum.
-              </p>
-            </v-card-text>
-  
-            <v-card-actions>
+  <v-container>
+      <h1 class="text--secondary mb-3 mt-3">My ads</h1>
+      <v-card class="elevation-10 mb-5" v-for="ad in myAds" :key="ad.id">
+          <v-row>
+              <v-img :src="ad.src" height="175px"></v-img>
               <v-spacer></v-spacer>
-              <v-btn text class="warning">Edit</v-btn>
-              <v-btn class="success">Buy</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
+          </v-row>
+          <v-row>
+              <v-card-text>
+                  <h2 class="text--primary">{{ ad.title }}</h2>
+                  <p>{{ ad.desc }}</p>
+              </v-card-text>
+              <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary" variant="text" :to="'/ad/' + ad.id">
+                      Open
+                  </v-btn>
+                  <v-spacer></v-spacer>
+              </v-card-actions>
+          </v-row>
+      </v-card>
+  </v-container>
+</template>
+
+<script>
+export default {
+  computed: {
+      myAds() {
+          return this.$store.getters.myAds
       }
-    }
   }
-  </script>
+
+};
+</script>
