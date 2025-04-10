@@ -35,8 +35,8 @@ export default {
             orders: [
                 {
                     id: "123",
-                    name: "Kate",
-                    phone: "+7(978)774-57-96",
+                    name: "Vladlena",
+                    phone: "+7(978) 872-06-36",
                     adId: "1",
                     done: true
                 }
