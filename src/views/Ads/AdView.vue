@@ -1,35 +1,37 @@
 <template>
   <v-container>
-      <h1 class="text--secondary mb-3 mt-3">My ads</h1>
-      <v-card class="elevation-10 mb-5" v-for="ad in myAds" :key="ad.id">
-          <v-row>
-              <v-img :src="ad.src" height="175px"></v-img>
-              <v-spacer></v-spacer>
-          </v-row>
-          <v-row>
-              <v-card-text>
-                  <h2 class="text--primary">{{ ad.title }}</h2>
-                  <p>{{ ad.desc }}</p>
-              </v-card-text>
-              <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="primary" variant="text" :to="'/ad/' + ad.id">
-                      Open
-                  </v-btn>
-                  <v-spacer></v-spacer>
-              </v-card-actions>
-          </v-row>
-      </v-card>
+    <v-row>
+      <v-col cols="12">
+        <v-card class="mt-5">
+          <v-img height="400px" :src="ad.src" cover></v-img>
+          <v-card-text>
+            <h1 class="text--primary mb-3">{{ ad.title }}</h1>
+            <p>
+              {{ ad.desc }}
+            </p>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn class="warning" color="orange">Edit</v-btn>
+            <v-btn class="success" color="green">Buy</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
 export default {
+  data() {
+    return {};
+  },
+  props: ['id'],
   computed: {
-      myAds() {
-          return this.$store.getters.myAds
-      }
+    ad() {
+      const id = this.id
+      return this.$store.getters.adById(id)
+    }
   }
-
 };
 </script>
