@@ -94,5 +94,8 @@ class User {
       error(state) {
         return state.error;
       },
+      isUserLoggedln(state) {
+        return state.user !== null
+      }
     },
   };
