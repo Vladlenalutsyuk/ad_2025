@@ -21,7 +21,6 @@ export default {
         },
     },
 
-
 	actions: {
         async createOrder({commit},{name, phone, adId, userId}) {
             let payload = new Order(name, phone, adId, userId,false, Math.random())
@@ -45,6 +44,10 @@ export default {
         }
     },
 
-        getters: {}
-
+    getters: {
+        orders (state, getters) {
+            if (getters.user == null) return []
+            return state.orders.filter(order => order.userId == getters.user.id)
+        }
+    },
 }
