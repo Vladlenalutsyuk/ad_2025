@@ -66,6 +66,11 @@ export default {
               this.$store.dispatch("createAd", ad)
           }
       }
-  }
+  },
+  computed: {
+      loading() {
+          return this.$store.getters.loading
+      }
+  },
 }
 </script>
